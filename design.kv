@@ -1,0 +1,89 @@
+WindowManager:
+    Welcome:
+    Login:
+    Menu:
+    
+
+<Welcome>:
+    name: "welcome"
+    GridLayout
+        cols:1
+        size: root.width, root.height
+        
+        Image:
+            source:'img/logo.png'
+        Label:
+            text: "Employee Management System" 
+            font_size:32
+            size_hint:(0.1,0.3)
+        Button: 
+            text: "Continue ->"
+            font_size :20
+            size_hint:(0.1,0.1)
+            on_release: 
+                app.root.current = "login" 
+                root.manager.transition.direction = "left"
+
+<Login>:
+    name : "login"
+    email:email
+    password:password
+
+    GridLayout
+        cols:1
+        size: root.width, root.height
+        
+        Image:
+            source:'img/logo.png'
+        Label:
+            text: "Login" 
+            font_size:32
+            size_hint:(0.1, 0.3)
+               
+        GridLayout:
+            cols:2
+            
+            Label:
+                text: "Email"
+                size_hint: (0.1,0.1)
+                
+            TextInput:
+                id:email
+                hint_text: "Enter your email"
+                multiline:False
+                size_hint: (0.1,0.1)
+                
+            Label:
+                text: "Password"
+                hint_text: "Enter your password"
+                size_hint: (0.1,0.1)
+            TextInput:
+                id:password
+                password:True
+                multiline:False
+                size_hint: (0.1,0.1)
+                
+        Button:
+            text: "Submit"
+            size_hint: (1,0.2)
+            font_size: 20
+            on_release: 
+                app.root.current = "menu" if password.text == "hello" else "login"
+                root.manager.transition.direction = "left"
+            
+            
+<Menu>:
+    name: "menu"
+    GridLayout
+        cols:1
+        size: root.width, root.height
+        Label:
+            text : "Menu Screen"
+        Label:
+            text : "This is Testing..."
+        Button: 
+            text: "Go Back"
+            size_hint: (1,0.2)
+            on_release : 
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
