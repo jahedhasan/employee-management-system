@@ -32,6 +32,7 @@ class WindowManager(ScreenManager):
 kv= Builder.load_file('design.kv')  
 class Eapp(App):
     #Window.size=(800, 500)
+    Window.clearcolor = "#ffffff"
     def build(self):
         return kv
     

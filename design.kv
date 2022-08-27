@@ -10,11 +10,13 @@ WindowManager:
         cols:1
         size: root.width, root.height
         
+        
         Image:
             source:'img/logo.png'
         Label:
             text: "Employee Management System" 
             font_size:32
+            color : "#000000"
             size_hint:(0.1,0.3)
         Button: 
             text: "Continue ->"
@@ -37,15 +39,22 @@ WindowManager:
             source:'img/logo.png'
         Label:
             text: "Login" 
+            color : "#000000"
             font_size:32
-            size_hint:(0.1, 0.3)
+            size_hint:(0.1, 0.7)
                
         GridLayout:
             cols:2
+            row_force_default: True
+            row_default_height: 70
+            spacing:10
+            padding: 10,10
             
             Label:
                 text: "Email"
+                color : "#000000"
                 size_hint: (0.1,0.1)
+                
                 
             TextInput:
                 id:email
@@ -55,6 +64,7 @@ WindowManager:
                 
             Label:
                 text: "Password"
+                color : "#000000"
                 hint_text: "Enter your password"
                 size_hint: (0.1,0.1)
             TextInput:
@@ -65,7 +75,7 @@ WindowManager:
                 
         Button:
             text: "Submit"
-            size_hint: (1,0.2)
+            size_hint: (1,0.3)
             font_size: 20
             on_release: 
                 app.root.current = "menu" if password.text == "hello" else "login"
@@ -79,8 +89,10 @@ WindowManager:
         size: root.width, root.height
         Label:
             text : "Menu Screen"
+            color : "#000000"
         Label:
             text : "This is Testing..."
+            color : "#000000"
         Button: 
             text: "Go Back"
             size_hint: (1,0.2)
