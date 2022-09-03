@@ -1,6 +1,8 @@
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
+from kivy.uix.widget import Widget
+from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 """
 from kivy.uix.label import Label
@@ -8,7 +10,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.widget import Widget
+
 """
 
 class Welcome(Screen):
@@ -26,6 +28,23 @@ class Login(Screen ):
 class Menu(Screen):
     pass
 
+class AddEmployee(Screen):
+    pass
+    
+    """
+    fname= ObjectProperty(none) 
+    lname= ObjectProperty(none) 
+    mail= ObjectProperty(none) 
+    gender= ObjectProperty(none) 
+    
+    def press(self):
+        fname: self.fname.text
+        lname: self.lname.text
+        mail: self.mail.text
+        
+        print({fname, lname, mail})
+        
+     """
 
 class WindowManager(ScreenManager):
     pass

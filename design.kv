@@ -1,7 +1,31 @@
+#:import Factory kivy.factory.Factory
+<MyPopup@Popup>
+    auto_dismiss: False
+    
+    size_hint: 0.6, 0.3
+    pos_hint: {"x": 0.2, "top": 0.5}
+    
+    title: "Warning!"
+    
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Please Enter Valid Password!"
+            font_size:25
+        Button:
+            text:  "Close Me !"
+            size_hint:0.3, 0.3
+            pos_hint: {"x": 0.3}
+            font_size: 22
+            on_release: root.dismiss()
+
 WindowManager:
     Welcome:
     Login:
     Menu:
+    AddEmployee:
     
 
 <Welcome>:
@@ -78,7 +102,7 @@ WindowManager:
             size_hint: (1,0.3)
             font_size: 20
             on_release: 
-                app.root.current = "menu" if password.text == "hello" else "login"
+                app.root.current = "menu" if password.text == "hello" else Factory.MyPopup().open()
                 root.manager.transition.direction = "left"
             
             
@@ -87,24 +111,182 @@ WindowManager:
     GridLayout
         cols:1
         size: root.width, root.height
-    
-        Label:
-            text : "Add An Employee"
-            color : "#000000"
-        Label:
-            text : "Display All Employee"
-            color : "#000000"
-        Label:
-            text : "Update Employee Record"
-            color : "#000000"
-        Label:
-            text : "Remove an Employee "
-            color : "#000000"
+        size_hint: 0.5,.8
+        pos_hint: {'center_x':0.5, 'center_y':0.5}
+        spacing:20
         
-            
-        Button: 
-            text: "Go Back"
-            size_hint: (1,0.2)
+                    
+        RoundedButton: 
+            text: "Add An Employee"
+            size_hint: (1,0.1)
+            color: "#000000"
+            bold: True
+            on_release : 
+                app.root.current = "addemployee"
+                root.manager.transition.direction = "right"
+        RoundedButton: 
+            text: "Display All Employee"
+            size_hint: (1,0.1)
+            color: "#000000"
+            bold: True
             on_release : 
                 app.root.current = "login"
                 root.manager.transition.direction = "right"
+        RoundedButton: 
+            text: "Update An Employee Record"
+            size_hint: (1,0.1)
+            color: "#000000"
+            bold: True
+            on_release : 
+                app.root.current = "login"
+                root.manager.transition.direction = "right"        
+        RoundedButton: 
+            text: "Remove An Employee"
+            size_hint: (1,0.1)
+            color: "#000000"
+            bold: True
+            on_release : 
+                app.root.current = "AddEmployee"
+                root.manager.transition.direction = "right"
+        RoundedButton: 
+            text: "Go Back"
+            size_hint: (1,0.1)
+            color: "#000000"
+            bold: True
+            on_release : 
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+
+<RoundedButton@Button>
+	background_color: (0,0,0,0)
+	background_normal:''
+	canvas.before:
+		Color:
+			rgba: (215/255,217/255,215/255, 1)
+		RoundedRectangle:
+			size:self.size
+			pos:self.pos
+			radius:[40]
+
+<AddEmployee>:
+    name: "addemployee"
+    
+    fname: fname
+    lname: lname
+    mail: mail
+    
+     
+    GridLayout
+        cols:1
+        size: root.width, root.height
+        
+        Label:
+            text: "Add An Employee" 
+            color : "#000000"
+            font_size:32
+            size_hint:(0.1, 0.4)
+        
+        GridLayout:
+            cols:2
+            padding:40
+            spacing:15
+            width:200
+            pos_hint:{'center_x':0.5, 'center_y':0.5}
+            
+            Label:
+                text:"First Name"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            TextInput:
+                id:fname
+                hint_text: "Enter your First Name"
+                multiline:False
+            
+            Label:
+                text:"Last Name"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            TextInput:
+                id:lname
+                hint_text: "Enter your Last Name"
+                multiline:False
+                 
+            Label:
+                text:"Mail"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            TextInput:
+                id:mail
+                hint_text: "Enter your email"
+                multiline:False
+                 
+            Label:
+                text:"Gender"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            GridLayout:
+        		cols:2
+        		spacing:10
+        		
+        		Label:
+        			text: "Male"
+        			color : "#000000"
+        		CheckBox:
+            		group: "gender"
+            		color:"black"
+        		
+        		
+        		Label:
+        			text: "Female" 
+        			color : "#000000"
+        		CheckBox:
+            		group: "gender"	
+            		color:"black"
+        		
+            
+            Label:
+                text:"Address"
+                color : "#000000"
+                size_hint: (0.1,0.2)
+            TextInput:
+                multiline:True
+                hint_text: "Enter your Address"
+                 
+            Label:
+                text:"Designation"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            GridLayout:
+        		cols:2
+        		spacing:20
+        		Label:
+        			text: "Admin"
+        			color : "#000000"
+        		CheckBox:
+            		color:"black"
+            		
+        		Label:
+        			text: "Manager" 
+        			color : "#000000"
+        		CheckBox:
+            		color:"black"
+            		on_active: pass
+            	Label:
+        			text: "General Staff" 
+        			color : "#000000"
+        		CheckBox:
+            		color:"black"
+            		on_active: pass
+        
+        
+        Button: 
+            text: "Submit"
+            font_size :20
+            size_hint:(0.1,0.1)
+            #on_press: root.press()
+            on_release: 
+                app.root.current = "menu" 
+                  
+        
+        
