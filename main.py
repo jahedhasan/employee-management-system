@@ -29,7 +29,25 @@ class Menu(Screen):
     pass
 
 class AddEmployee(Screen):
-    pass
+    checks = []
+    
+    def checkbox_click(self, instance, value, topping):
+        if value == True:
+            AddEmployee.checks.append(topping)
+            tops=''
+            for x in AddEmployee.checks:
+                tops=f'{tops}{x}'
+             
+            print(tops)
+            #self.ids.output_label.text=f'You Selected: {tops} '
+            
+        else:
+            AddEmployee.checks.remove(topping)
+            tops=''
+            for x in AddEmployee.checks:
+                tops=f'{tops}{x}'
+            print(tops)
+            #self.ids.output_label.text=f'You Selected: {tops} '
     
     """
     fname= ObjectProperty(none) 
@@ -43,6 +61,7 @@ class AddEmployee(Screen):
         mail: self.mail.text
         
         print({fname, lname, mail})
+        
         
      """
 
