@@ -27,6 +27,7 @@ WindowManager:
     Menu:
     AddEmployee:
     DisplayAllEmployee:
+    EmployeeDetails:
     
 
 <Welcome>:
@@ -317,6 +318,7 @@ WindowManager:
     name: "displayallemployee"
     pos_hint: {"center_x": .5, "center_y": .5}
     
+    
     MDScrollView:
         MDList:
             id: container    
@@ -392,7 +394,12 @@ WindowManager:
                 IconLeftWidget:
                     icon: "account-tie-hat"
             
-            
+    MDFloatingActionButton:
+        icon: "arrow-left-circle-outline"
+        md_bg_color: "black" 
+        pos_hint: {"x":0.9, "y": .1} 
+        on_release: 
+            app.root.current = "menu"
 
 #    ScrollView:
 #        MDGridLayout:
@@ -414,4 +421,68 @@ WindowManager:
 
         IconLeftWidget:
             icon: 'phone'
+
+
+
+<EmployeeDetails>:
+    name:"employeedetails"
+    GridLayout
+        cols:1
+        size: root.width, root.height
+        
+        Label:
+            text: "Employee Details" 
+            color : "#000000"
+            font_size:32
+            size_hint:(0.1, 0.4)
+        
+        GridLayout:
+            cols:1
+            padding:0
+            spacing:7
+            
+            Label:
+                text:"Name:  Jahed Hasan"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            
+            Label:
+                text:"Designation:  Admin"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Email: jahed.duet@gmail.com"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Gender: Male"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Address: Feni Sadar, Feni, Chattagram"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Salary: 50000/-"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Salary Status: Pending(running month)"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+            Label:
+                text:"Absent: 0 Days"
+                color : "#000000"
+                size_hint: (0.1,0.1)
+          
+          
+        
+        
     
+        Button: 
+            text: "Back"
+            font_size :20
+            size_hint:(0.1,0.1)
+            on_release: 
+                app.root.current = "displayallemployee" 
+                root.manager.transition.direction = "right"

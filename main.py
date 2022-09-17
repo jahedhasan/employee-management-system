@@ -51,7 +51,8 @@ class DisplayAllEmployee(Screen):
             
      '''       
             
-            
+class EmployeeDetails(Screen):
+    pass          
             
 class AddEmployee(Screen):
     checks = []
