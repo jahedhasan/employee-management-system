@@ -50,7 +50,10 @@ class DisplayAllEmployee(Screen):
             self.manager.get_screen('displayallemployee').ids.panel_container.add_widget(panel)
             
      '''       
-            
+  
+class UpdateEmployee(Screen):
+    pass
+          
 class EmployeeDetails(Screen):
     pass          
             
